@@ -18,7 +18,7 @@ export default function AddUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // LocalStorage se purana data nikalna
+    // get data from LocalStorage
     const oldData = JSON.parse(localStorage.getItem(LOCAL_KEY) || "[]");
 
     // Naya user object banana
@@ -30,10 +30,10 @@ export default function AddUser() {
       company,
     };
 
-    // LocalStorage me update karna
+    
     localStorage.setItem(LOCAL_KEY, JSON.stringify([newUser, ...oldData]));
 
-    // Home page pe redirect karna
+    // Home page redirect
     navigate("/");
   };
 

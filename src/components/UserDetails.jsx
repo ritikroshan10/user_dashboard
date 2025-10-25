@@ -5,16 +5,16 @@ import { ThemeContext } from "../context/ThemeContext";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt, FaBuilding, FaArrowLeft } from "react-icons/fa";
 
-// ✅ LocalStorage ke liye key (same jo AddUser me use hui thi)
+
 const LOCAL_KEY = "add_users";
 
 export default function UserDetails() {
-  const { id } = useParams(); // URL se user id nikalna
-  const navigate = useNavigate(); // navigate karne ke liye
-  const [user, setUser] = useState(null); // single user data
-  const { darkMode } = useContext(ThemeContext); // theme context
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const { darkMode } = useContext(ThemeContext);
 
-  // ✅ User data fetch karna (API ya LocalStorage se)
+  // fetch data from API or localStorage
   useEffect(() => {
     axios
       .get(`https://jsonplaceholder.typicode.com/users/${id}`)
@@ -26,7 +26,7 @@ export default function UserDetails() {
       });
   }, [id]);
 
-  // ✅ Jab tak data load ho raha hai
+
   if (!user)
     return (
       <p
@@ -37,7 +37,7 @@ export default function UserDetails() {
       </p>
     );
 
-  // ✅ User detail card render
+  // User detail card render
   return (
     <div
       className={`max-w-md mx-auto p-6 rounded-3xl shadow-xl transition-all duration-500
